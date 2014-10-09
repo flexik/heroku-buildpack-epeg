@@ -29,4 +29,4 @@ rm -rf epeg
 
 mkdir -p .profile.d
 echo "export PATH='$PATH:$HOME/vendor/epeg/bin'" > .profile.d/epeg.sh
-echo "export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:$HOME/vendor/epeg/lib'" >? .profile.d/epeg.sh
+echo "export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:$HOME/vendor/epeg/lib'" >> .profile.d/epeg.sh
