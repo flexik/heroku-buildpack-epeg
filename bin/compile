@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+set -e
+set -o pipefail
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
+
+cd $BUILD_DIR
+
+mkdir -p bin
+
+echo "-----> Downloading epeg"
+git clone "https://github.com/mattes/epeg.git"
+
+echo "-----> Building epeg"
+cd epeg
+./configure --prefix="$BUILD_DIR/vendor/epeg"
+make
+
+echo "-----> Installing epeg"
+make install
+chmod +x "$BUILD_DIR/vendor/epeg/bin/epeg"
+
+mkdir -p .profile.d
+echo "PATH=$PATH:$HOME/vendor/epeg/bin" > .profile.d/epeg.sh
