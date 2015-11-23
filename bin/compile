@@ -16,6 +16,7 @@ git clone "https://github.com/mattes/epeg.git"
 
 echo "-----> Building epeg"
 cd epeg
+NOCONFIGURE=true ./autogen.sh
 ./configure --prefix="$BUILD_DIR/vendor/epeg"
 make
 
