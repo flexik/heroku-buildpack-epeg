@@ -28,6 +28,8 @@ echo "-----> Removing source files"
 cd $BUILD_DIR
 rm -rf epeg
 
-mkdir -p .profile.d
-echo "export PATH='$PATH:$HOME/vendor/epeg/bin'" > .profile.d/epeg.sh
-echo "export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:$HOME/vendor/epeg/lib'" >> .profile.d/epeg.sh
+mkdir -p $BUILD_DIR/.profile.d
+cat <<EOF >$BUILD_DIR/.profile.d/epeg.sh
+export PATH="\$HOME/vendor/epeg/bin:\$PATH"
+export LD_LIBRARY_PATH="\$HOME/vendor/epeg/lib:\$LD_LIBRARY_PATH"
+EOF
